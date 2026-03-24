@@ -4,6 +4,7 @@ import {
   MessageSquare,
   LogOut,
   GraduationCap,
+  UserIcon,
 } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { useLocation } from 'react-router-dom';
@@ -20,6 +21,7 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import { useAuthStore } from '@/store/authStore';
+import { title } from 'process';
 
 const navItems = [
   { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard },
@@ -45,9 +47,8 @@ export function AppSidebar() {
             <GraduationCap className="w-4 h-4 text-secondary-foreground" />
           </div>
           {!collapsed && (
-            <span className="text-lg font-bold font-heading text-sidebar-foreground">
-              EduPlatform
-            </span>
+            <span className="text-xl font-bold font-heading">Devs Karebe School</span>
+
           )}
         </div>
 
@@ -80,6 +81,19 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              isActive={isActive('/profile')}
+            >
+              <NavLink
+                to="/profile"
+                className="hover:bg-sidebar-accent/50"
+                activeClassName="bg-sidebar-accent text-sidebar-primary font-medium"
+              >
+                <UserIcon className="mr-2 h-4 w-4" />
+                {!collapsed && <span>Perfil</span>}
+              </NavLink>
+            </SidebarMenuButton>
             <SidebarMenuButton onClick={logout}>
               <LogOut className="mr-2 h-4 w-4" />
               {!collapsed && <span>Sair</span>}
