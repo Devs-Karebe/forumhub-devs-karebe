@@ -7,10 +7,10 @@ const AuthLayout = () => (
     <div className="hidden lg:flex lg:w-1/2 gradient-hero items-center justify-center p-12">
       <div className="max-w-md text-center space-y-6 animate-fade-in">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-accent">
-          <GraduationCap className="w-8 h-8 text-secondary-foreground" />
+          <GraduationCap className="w-8 h-8 text-primary-foreground" />
         </div>
         <h1 className="text-4xl font-bold font-heading text-primary-foreground">
-          EduPlatform
+          Dev's Karebe School
         </h1>
         <p className="text-lg text-primary-foreground/70">
           Aprenda no seu ritmo. Conecte-se com outros estudantes. Evolua sua carreira.
