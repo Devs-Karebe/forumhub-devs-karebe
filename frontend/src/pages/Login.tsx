@@ -33,15 +33,16 @@ const Login = () => {
 
   return (
     <>
-      <div className="flex items-center gap-2 mb-8 lg:hidden">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-accent">
-          <GraduationCap className="w-5 h-5 text-secondary-foreground" />
-        </div>
-        <span className="text-xl font-bold font-heading">Devs Karebe School</span>
-      </div>
 
       <Card className="shadow-card border-0">
         <CardHeader className="space-y-1">
+          <div className="flex items-center gap-2 mb-8 lg:hidden">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-accent">
+              <GraduationCap className="w-5 h-5 text-secondary-foreground" />
+            </div>
+            <span className="text-xl font-bold font-heading">Devs Karebe School</span>
+          </div>
+
           <CardTitle className="text-2xl font-heading">Entrar</CardTitle>
           <CardDescription>Acesse sua conta para continuar</CardDescription>
         </CardHeader>

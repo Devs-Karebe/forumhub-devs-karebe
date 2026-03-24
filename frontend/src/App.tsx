@@ -15,6 +15,7 @@ import CourseDetail from "@/pages/CourseDetail";
 import Forum from "@/pages/Forum";
 import ForumSubject from "@/pages/ForumSubject";
 import NotFound from "@/pages/NotFound";
+import Profile from "@/pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/courses/:courseId" element={<CourseDetail />} />
             <Route path="/forum" element={<Forum />} />
             <Route path="/forum/:subjectId" element={<ForumSubject />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
 
           {/* Redirects & fallback */}

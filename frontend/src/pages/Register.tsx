@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, type LoginFormData } from '@/schemas/loginSchema';
 import { useAuthStore } from '@/store/authStore';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { GraduationCap } from 'lucide-react';
-import { RegisterFormData } from '@/schemas/registerSchema';
+import { RegisterFormData, registerSchema } from '@/schemas/registerSchema';
 import { Separator } from '@radix-ui/react-separator';
 
 const Register = () => {
@@ -20,7 +19,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(registerSchema),
   });
 
   const onSubmit = async (data: RegisterFormData) => {
@@ -35,15 +34,15 @@ const Register = () => {
 
   return (
     <>
-      <div className="flex items-center gap-2 mb-8 lg:hidden">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-accent">
-          <GraduationCap className="w-5 h-5 text-secondary-foreground" />
-        </div>
-        <span className="text-xl font-bold font-heading">EduPlatform</span>
-      </div>
-
       <Card className="shadow-card border-0">
         <CardHeader className="space-y-1">
+          <div className="flex items-center gap-2 mb-8 lg:hidden">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-accent">
+              <GraduationCap className="w-5 h-5 text-secondary-foreground" />
+            </div>
+            <span className="text-xl font-bold font-heading">Devs Karebe School</span>
+          </div>
+
           <CardTitle className="text-2xl font-heading">Registrar</CardTitle>
           <CardDescription>
             Crie sua conta para começar a aprender
@@ -93,7 +92,7 @@ const Register = () => {
               {isSubmitting ? 'Registrando...' : 'Registrar'}
             </Button>
 
-            <Separator/>
+            <Separator />
             <p className="text-center text-sm text-muted-foreground">
               Já tem uma conta?
               <Button variant="link" onClick={() => navigate('/login')}>
