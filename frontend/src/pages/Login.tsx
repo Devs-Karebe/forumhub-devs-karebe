@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { GraduationCap } from 'lucide-react';
+import { Separator } from '@radix-ui/react-separator';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,11 +23,11 @@ const Login = () => {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    // Mock login — replace with authService.login(data)
     setUser(
       { id: '1', name: 'Estudante', email: data.email, role: 'student' },
       'mock_token',
     );
+    console.log('Login bem-sucedido:', data);
     navigate('/dashboard');
   };
 
@@ -36,7 +37,7 @@ const Login = () => {
         <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-accent">
           <GraduationCap className="w-5 h-5 text-secondary-foreground" />
         </div>
-        <span className="text-xl font-bold font-heading">EduPlatform</span>
+        <span className="text-xl font-bold font-heading">Devs Karebe School</span>
       </div>
 
       <Card className="shadow-card border-0">
@@ -75,6 +76,14 @@ const Login = () => {
             <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? 'Entrando...' : 'Entrar'}
             </Button>
+
+            <Separator />
+            <p className="text-center text-sm text-muted-foreground">
+              Não tem uma conta?
+              <Button variant="link" onClick={() => navigate('/register')}>
+                Cadastre-se
+              </Button>
+            </p>
           </form>
         </CardContent>
       </Card>

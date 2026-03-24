@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/AppSidebar';
 import { useAuthStore } from '@/store/authStore';
@@ -8,6 +8,11 @@ import { Button } from '@/components/ui/button';
 
 const DashboardLayout = () => {
   const user = useAuthStore((s) => s.user);
+
+  // Se não há usuário autenticado, redirecionar para login
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
     <SidebarProvider>

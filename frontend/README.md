@@ -43,7 +43,7 @@ npm run dev
 bun dev
 ```
 
-O app estará disponível em `http://localhost:8080`.
+O app estará disponível em `http://localhost:8000`.
 
 ### Variáveis de Ambiente
 
