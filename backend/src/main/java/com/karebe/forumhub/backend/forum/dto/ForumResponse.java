@@ -1,4 +1,4 @@
-package backend.forum.dto;
+package com.karebe.forumhub.backend.forum.dto;
 
 public class ForumResponse {
 }

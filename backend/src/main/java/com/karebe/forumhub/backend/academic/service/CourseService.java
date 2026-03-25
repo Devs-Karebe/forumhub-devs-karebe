@@ -1,4 +1,4 @@
-package backend.academic.service;
+package com.karebe.forumhub.backend.academic.service;
 
 public class CourseService {
 }

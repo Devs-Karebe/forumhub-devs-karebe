@@ -1,4 +1,4 @@
-package backend.forum.service;
+package com.karebe.forumhub.backend.forum.service;
 
 public class ForumService {
 }

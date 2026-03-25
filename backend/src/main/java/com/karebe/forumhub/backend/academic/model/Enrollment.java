@@ -1,4 +1,4 @@
-package backend.academic.model;
+package com.karebe.forumhub.backend.academic.model;
 
 public class Enrollment {
 }

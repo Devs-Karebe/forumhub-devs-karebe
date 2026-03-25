@@ -1,4 +1,4 @@
-package backend.reply.model;
+package com.karebe.forumhub.backend.reply.model;
 
 public class Reply {
 }

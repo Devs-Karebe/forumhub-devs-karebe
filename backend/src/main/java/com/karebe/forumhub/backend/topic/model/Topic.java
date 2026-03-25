@@ -1,4 +1,4 @@
-package backend.topic.model;
+package com.karebe.forumhub.backend.topic.model;
 
 public class Topic {
 }

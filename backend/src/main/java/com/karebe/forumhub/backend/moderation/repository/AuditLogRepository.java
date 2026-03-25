@@ -1,4 +1,4 @@
-package backend.moderation.repository;
+package com.karebe.forumhub.backend.moderation.repository;
 
 public class AuditLogRepository {
 }

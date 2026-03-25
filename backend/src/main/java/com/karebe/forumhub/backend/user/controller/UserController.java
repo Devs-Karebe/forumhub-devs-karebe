@@ -1,4 +1,4 @@
-package backend.user.controller;
+package com.karebe.forumhub.backend.user.controller;
 
 public class UserController {
 }

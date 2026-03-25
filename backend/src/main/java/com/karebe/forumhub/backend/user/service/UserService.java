@@ -1,4 +1,4 @@
-package backend.user.service;
+package com.karebe.forumhub.backend.user.service;
 
 public class UserService {
 }

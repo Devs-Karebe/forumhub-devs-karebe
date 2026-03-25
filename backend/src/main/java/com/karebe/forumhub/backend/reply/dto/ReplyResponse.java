@@ -1,4 +1,4 @@
-package backend.reply.dto;
+package com.karebe.forumhub.backend.reply.dto;
 
 public class ReplyResponse {
 }
