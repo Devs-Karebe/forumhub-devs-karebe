@@ -24,14 +24,10 @@ $$;
 -- USERS TABLE -------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS users (
-                                     id SERIAL PRIMARY KEY,
-
-                                     name VARCHAR(150) NOT NULL,
-
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
-
     password VARCHAR(255) NOT NULL,
-
     role users_role NOT NULL DEFAULT 'STUDENT',
 
     status general_status NOT NULL DEFAULT 'OPEN',
