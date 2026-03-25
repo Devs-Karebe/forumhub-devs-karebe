@@ -1,6 +1,6 @@
 package com.karebe.forumhub.backend.shared.enums;
 
-public enum TopicStatus {
+public enum GeneralStatus {
     OPEN,
     CLOSED
 }

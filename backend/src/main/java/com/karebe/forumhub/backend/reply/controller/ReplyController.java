@@ -1,4 +1,4 @@
-package backend.reply.controller;
+package com.karebe.forumhub.backend.reply.controller;
 
 public class ReplyController {
 }

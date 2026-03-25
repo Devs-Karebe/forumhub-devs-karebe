@@ -1,4 +1,4 @@
-package backend.topic.dto;
+package com.karebe.forumhub.backend.topic.dto;
 
 public class TopicRequest {
 }

@@ -1,4 +1,4 @@
-package backend.moderation.service;
+package com.karebe.forumhub.backend.moderation.service;
 
 public class ModerationService {
 }
