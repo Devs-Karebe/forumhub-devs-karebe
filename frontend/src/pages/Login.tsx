@@ -1,14 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { loginSchema, type LoginFormData } from '@/schemas/loginSchema';
-import { useAuthStore } from '@/store/authStore';
+import { useAuthStore, parseJwt, getRedirectPath } from '@/store/authStore';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { GraduationCap } from 'lucide-react';
 import { Separator } from '@radix-ui/react-separator';
+import { authService } from '@/services/api/authService';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,18 +19,45 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
 
+  useEffect(() => {
+    const email = localStorage.getItem('register_email');
+    if (email) {
+      setValue('email', email);
+      localStorage.removeItem('register_email');
+    }
+  }, [setValue]);
+
   const onSubmit = async (data: LoginFormData) => {
-    setUser(
-      { id: '1', name: 'Estudante', email: data.email, role: 'student' },
-      'mock_token',
-    );
-    console.log('Login bem-sucedido:', data);
-    navigate('/dashboard');
+    try {
+      const response = await authService.login(data as { email: string; password: string });
+      if (response.data.success) {
+        const { accessToken, name, email } = response.data.data;
+        const payload = parseJwt(accessToken);
+        if (payload) {
+          const user = {
+            id: payload.sub,
+            name,
+            email,
+            roles: payload.roles,
+          };
+          setUser(user, accessToken);
+          const redirectPath = getRedirectPath(payload.roles);
+          navigate(redirectPath);
+        } else {
+          console.error('Token inválido');
+        }
+      } else {
+        console.error('Erro no login:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+    }
   };
 
   return (

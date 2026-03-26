@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { GraduationCap } from 'lucide-react';
 import { RegisterFormData, registerSchema } from '@/schemas/registerSchema';
 import { Separator } from '@radix-ui/react-separator';
+import { authService } from '@/services/api/authService';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,13 +24,17 @@ const Register = () => {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-    // Mock register — replace with authService.register(data)
-    setUser(
-      { id: '1', name: data.name, email: data.email, role: 'student' },
-      'mock_token',
-    );
-    console.log('Registro bem-sucedido:', data);
-    navigate('/dashboard');
+    try {
+      const response = await authService.register(data as { name: string; email: string; password: string });
+      if (response.data.success) {
+        localStorage.setItem('register_email', data.email);
+        navigate('/login');
+      } else {
+        console.error('Erro no registro:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Erro ao registrar:', error);
+    }
   };
 
   return (
